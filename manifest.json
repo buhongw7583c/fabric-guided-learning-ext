@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "Microsoft Fabric Guided Learning (PoC)",
+  "version": "0.3.0",
+  "description": "Contextual, interactive guided learning overlay on top of Microsoft Fabric.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://app.fabric.microsoft.com/*",
+    "https://*.fabric.microsoft.com/*",
+    "https://*.powerbi.com/*",
+    "https://*.analysis.windows.net/*",
+    "http://localhost:*/*",
+    "http://127.0.0.1:*/*",
+    "file:///*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Fabric Guided Learning"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://app.fabric.microsoft.com/*",
+        "https://*.fabric.microsoft.com/*",
+        "https://*.powerbi.com/*",
+        "https://*.analysis.windows.net/*",
+        "http://localhost:*/*",
+        "http://127.0.0.1:*/*",
+        "file:///*"
+      ],
+      "js": [
+        "lessons.js",
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
+
+
